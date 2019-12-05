@@ -1,4 +1,6 @@
 const dotenv = require("dotenv");
+const express = require("express");
+
 dotenv.config();
 
 const MongoClient = require("mongodb").MongoClient;
@@ -33,3 +35,14 @@ async function initDb() {
 }
 
 initDb();
+
+const app = express();
+const port = 8081;
+
+app.get("/", (_request, response) => {
+  response.send("Konitschiwa bitches");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on  http://localhost:${port}`);
+});
